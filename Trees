@@ -1,0 +1,81 @@
+Tree creation and dfs::
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+class Node{
+    int data;
+   
+    Node left,right;
+    Node(int data){
+        this.data=data;
+        this.left=this.right=null;
+        
+    }
+}
+class LL{
+    
+    public void inorder(Node root)
+    {
+       
+            if(root==null)
+            return ;
+            
+            inorder(root.left);
+            System.out.print(root.data+"->");
+            inorder(root.right);
+            
+    }
+    public void postorder(Node root)
+    {
+       
+            if(root==null)
+            return ;
+            
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.data+"->");
+            
+    }
+    public void preorder(Node root)
+    {
+       
+            if(root==null)
+            return ;
+            System.out.print(root.data+"->");
+            preorder(root.left);
+            preorder(root.right);
+            
+    }
+    
+}
+class HelloWorld {
+    public static void main(String[] args) {
+      Node root;
+      root=new Node(1);
+      root.left=new Node(2);
+      root.right=new Node(3);
+      root.left.left=new Node(4);
+      root.left.right=new Node(5);
+      root.right.left=new Node(6);
+      root.right.right=new Node(7);
+      
+    
+    LL obj=new LL();
+    
+    System.out.println("Inorder");
+    obj.inorder(root);
+    System.out.println(" ");
+    System.out.println("Preorder");
+    obj.preorder(root);
+    System.out.println(" ");
+    System.out.println("Postorder");
+    obj.postorder(root);
+    }
+}
+
+O/P::
+Inorder
+4->2->5->1->6->3->7-> 
+Preorder
+1->2->4->5->3->6->7-> 
+Postorder
+4->5->2->6->7->3->1->
